@@ -2,6 +2,8 @@
 
 This is the initial single-PostgreSQL deployment for the ERP. Each schema is a future service boundary: `identity`, `party`, `catalog`, `pricing`, `inventory`, `procurement`, `sales`, `returns`, `finance`, `audit`, and `integration`. PostgreSQL is the only supported engine; all timestamps are UTC `timestamptz` and all amounts/quantities use exact `numeric` types.
 
+The repository uses one consolidated install file, `database/schema.sql`, rather than a migration directory. The backend is intended to be ASP.NET Core with Npgsql, and the frontend is intended to be Flutter communicating through backend APIs.
+
 ## Ownership and relationships
 
 Identity owns users and RBAC. Party owns the single business-entity master and customer/supplier roles. Catalog owns products and units. Pricing owns immutable effective-dated prices. Inventory owns physical stock, reservations, receipts, and the immutable movement ledger. Procurement and sales own their documents and lines. Returns owns return/refund workflow. Finance owns payments, cash, and double-entry journals. Audit owns append-only audit records. Integration owns the transactional outbox.
