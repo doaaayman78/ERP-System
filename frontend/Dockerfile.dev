@@ -1,0 +1,11 @@
+FROM ghcr.io/cirruslabs/flutter:stable
+
+WORKDIR /app
+
+# The source code will be mounted as a volume in docker-compose
+# We just need to expose the port Flutter uses for the web server
+EXPOSE 8080
+
+# Default command to run the development server
+# --web-hostname=0.0.0.0 is required for Docker port forwarding to work
+CMD ["flutter", "run", "-d", "web-server", "--web-hostname=0.0.0.0", "--web-port=8080", "--target=lib/main_dev.dart"]
