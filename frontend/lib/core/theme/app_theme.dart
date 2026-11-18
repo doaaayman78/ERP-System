@@ -1,5 +1,5 @@
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:material_ui/material_ui.dart';
+
 import 'app_colors.dart';
 import 'app_text_styles.dart';
 
@@ -91,7 +91,7 @@ abstract final class AppTheme {
       fontFamily: AppTextStyles.fontFamily,
       textTheme: AppTextStyles.textTheme,
       extensions: const <ThemeExtension<dynamic>>[semanticColors],
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.white,
         foregroundColor: AppColors.textPrimary,
         elevation: 0,
@@ -105,7 +105,7 @@ abstract final class AppTheme {
         margin: EdgeInsets.zero,
         surfaceTintColor: AppColors.white,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12.r),
+          borderRadius: BorderRadius.circular(12),
           side: const BorderSide(color: AppColors.border),
         ),
       ),
@@ -113,27 +113,27 @@ abstract final class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.white,
-        contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
         hintStyle: AppTextStyles.bodySmall,
         labelStyle: AppTextStyles.label,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.error),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.error, width: 1.5),
         ),
       ),
@@ -143,21 +143,21 @@ abstract final class AppTheme {
           foregroundColor: AppColors.white,
           disabledBackgroundColor: AppColors.disabled,
           disabledForegroundColor: AppColors.white,
-          minimumSize: Size(0, 44.h),
-          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+          minimumSize: const Size(0, 44),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
           textStyle: AppTextStyles.button,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.primary,
-          minimumSize: Size(0, 44.h),
-          padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 12.h),
+          minimumSize: const Size(0, 44),
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
           textStyle: AppTextStyles.button,
           side: const BorderSide(color: AppColors.border),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         ),
       ),
       textButtonTheme: TextButtonThemeData(
@@ -166,25 +166,21 @@ abstract final class AppTheme {
           textStyle: AppTextStyles.button,
         ),
       ),
-      dataTableTheme: DataTableThemeData(
+      dataTableTheme: const DataTableThemeData(
         headingTextStyle: AppTextStyles.tableHeader,
         dataTextStyle: AppTextStyles.body,
         dividerThickness: 1,
-        horizontalMargin: 16.w,
-        columnSpacing: 24.w,
+        horizontalMargin: 16,
+        columnSpacing: 24,
       ),
-      navigationRailTheme: NavigationRailThemeData(
+      navigationRailTheme: const NavigationRailThemeData(
         backgroundColor: AppColors.sidebarBackground,
-        selectedIconTheme: const IconThemeData(color: AppColors.white),
-        unselectedIconTheme: const IconThemeData(color: AppColors.sidebarForeground),
+        selectedIconTheme: IconThemeData(color: AppColors.white),
+        unselectedIconTheme: IconThemeData(color: AppColors.sidebarForeground),
         selectedLabelTextStyle: TextStyle(
-          fontSize: 14.sp,
           color: AppColors.white, fontWeight: FontWeight.w600,
         ),
-        unselectedLabelTextStyle: TextStyle(
-          fontSize: 14.sp,
-          color: AppColors.sidebarForeground,
-        ),
+        unselectedLabelTextStyle: TextStyle(color: AppColors.sidebarForeground),
       ),
     );
   }
@@ -220,17 +216,16 @@ abstract final class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: darkSurface,
-        contentPadding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.h),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: outline),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: outline),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8.r),
+          borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: Color(0xFF79B5D9), width: 1.5),
         ),
       ),
