@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
-import 'core/config/env_config.dart';
+import 'core/theme/app_theme.dart';
+import 'features/landing/screens/landing_screen.dart';
 
 void main(){
   runApp(const ERPApp());
@@ -12,21 +13,10 @@ class ERPApp extends StatelessWidget{
     Widget build(BuildContext context) {
       return MaterialApp(
         title: 'ERP System (Dev)',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.blueGrey,
-          ),
-          useMaterial3: true,
-        ),
-
-        home: Scaffold(
-          appBar: AppBar(
-            title: const Text('ERP Development - ${EnvConfig.flavor}'),
-          ),
-          body: Center(
-            child: Text('Connected to Backend: ${EnvConfig.apiBaseUrl}'),
-          ),
-        ),
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        themeMode: ThemeMode.system,
+        home: const LandingScreen(),
       );
     }
 }
