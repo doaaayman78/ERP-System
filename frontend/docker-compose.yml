@@ -1,36 +1,30 @@
-version: '3.8'
-
 services:
-  # Development environment - Uses local volume mount and hot reload
+  # Development container with volume mount and web server
   frontend-dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    container_name: aura-frontend-dev
     ports:
-      - "8080:8080"
+      - "${FRONTEND_DEV_PORT:-8080}:8080"
     volumes:
       - .:/app
       - /app/build
       - /app/.dart_tool
     environment:
-      - CHOKIDAR_USEPOLLING=true # Helps with file watching in some OS/Docker combos
-    # Uncomment to connect to your backend network
-    # networks:
-    #   - erp-network
+      - CHOKIDAR_USEPOLLING=true
 
-  # Production environment - Multi-stage build served by Nginx
+  # Production multi-stage container served by Nginx
   frontend-prod:
     build:
       context: .
       dockerfile: Dockerfile
       args:
-        - FLAVOR=admin
-        - API_BASE_URL=http://api-gateway:8000/api
+        FLAVOR: ${FLAVOR:-admin}
+        API_BASE_URL: ${API_BASE_URL:-http://localhost:8000/api}
+        USE_MOCK_DATA: ${USE_MOCK_DATA:-true}
+        POWER_BI_EMBED_URL: ${POWER_BI_EMBED_URL:-}
+        AI_SERVICE_BASE_URL: ${AI_SERVICE_BASE_URL:-}
+    container_name: aura-frontend-prod
     ports:
-      - "80:80"
-    # networks:
-    #   - erp-network
-
-# networks:
-#   erp-network:
-#     external: true
+      - "${FRONTEND_PROD_PORT:-80}:80"

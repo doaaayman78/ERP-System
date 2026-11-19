@@ -1,28 +1,35 @@
-# Stage 1: Build the Flutter Web application
+# Stage 1: Build the AURA ERP Flutter Web application
 FROM ghcr.io/cirruslabs/flutter:stable AS build
 
 WORKDIR /app
 
-# Copy dependency files first to cache them
+# Cache dependencies first for faster rebuilds
 COPY pubspec.yaml pubspec.lock ./
 RUN flutter pub get
 
-# Copy the rest of the application
+# Copy the rest of the frontend source code
 COPY . .
 
-# Build the application for web
-# Using Dart defines to pass environment variables at build time
+# Compile-time arguments injected into EnvConfig
 ARG FLAVOR=admin
 ARG API_BASE_URL=http://localhost:8000/api
-RUN flutter build web --target=lib/main_${FLAVOR}.dart --dart-define=API_BASE_URL=${API_BASE_URL} --release
+ARG USE_MOCK_DATA=true
+ARG POWER_BI_EMBED_URL=
+ARG AI_SERVICE_BASE_URL=
 
-# Stage 2: Serve the application with Nginx
+RUN flutter build web \
+  --target=lib/main_${FLAVOR}.dart \
+  --dart-define=FLAVOR=${FLAVOR} \
+  --dart-define=API_BASE_URL=${API_BASE_URL} \
+  --dart-define=USE_MOCK_DATA=${USE_MOCK_DATA} \
+  --dart-define=POWER_BI_EMBED_URL=${POWER_BI_EMBED_URL} \
+  --dart-define=AI_SERVICE_BASE_URL=${AI_SERVICE_BASE_URL} \
+  --release
+
+# Stage 2: Serve compiled web assets with Nginx
 FROM nginx:alpine
 
-# Copy the custom Nginx configuration for a Single Page Application (SPA)
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy the built web assets from the build stage
 COPY --from=build /app/build/web /usr/share/nginx/html
 
 EXPOSE 80

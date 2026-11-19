@@ -1,11 +1,10 @@
 import 'package:material_ui/material_ui.dart';
 
-/// Central palette for the ERP application.
 abstract final class AppColors {
   // Brand
-  static const primary = Color(0xFF245B82);
-  static const primaryDark = Color(0xFF173E5B);
-  static const primaryLight = Color(0xFFE8F1F7);
+  static const primary = Color(0xFF2563B5);
+  static const primaryDark = Color(0xFF132A4A);
+  static const primaryLight = Color(0xFFEAF2FC);
 
   // Neutrals
   static const white = Color(0xFFFFFFFF);
@@ -13,23 +12,23 @@ abstract final class AppColors {
   static const pageBackground = Color(0xFFF5F7FA);
   static const surface = Color(0xFFFFFFFF);
   static const border = Color(0xFFE2E7ED);
-  static const textPrimary = Color(0xFF202833);
-  static const textSecondary = Color(0xFF687586);
+  static const textPrimary = Color(0xFF1A2233);
+  static const textSecondary = Color(0xFF64748B);
   static const disabled = Color(0xFFADB7C2);
 
   // Semantic states
-  static const success = Color(0xFF238653);
-  static const successLight = Color(0xFFE8F5ED);
-  static const warning = Color(0xFFD99A22);
+  static const success = Color(0xFF1F8A5B);
+  static const successLight = Color(0xFFE6F6EE);
+  static const warning = Color(0xFFD98A16);
   static const warningLight = Color(0xFFFFF5DF);
-  static const error = Color(0xFFC83D3D);
-  static const errorLight = Color(0xFFFCEBEC);
-  static const info = Color(0xFF2878B8);
-  static const infoLight = Color(0xFFEAF3FB);
+  static const error = Color(0xFFD13B3B);
+  static const errorLight = Color(0xFFFDECEC);
+  static const info = Color(0xFF2563B5);
+  static const infoLight = Color(0xFFEAF2FC);
 
   // Sidebar
-  static const sidebarBackground = Color(0xFF173E5B);
-  static const sidebarForeground = Color(0xFFEAF1F6);
-  static const sidebarSelected = Color(0xFF245B82);
-  static const sidebarSelectedIndicator = Color(0xFF70B7E2);
+  static const sidebarBackground = Color(0xFF132A4A);
+  static const sidebarForeground = Color(0xFFD3DFEE);
+  static const sidebarSelected = Color(0xFF255084);
+  static const sidebarSelectedIndicator = Color(0xFF60A5FA);
 }

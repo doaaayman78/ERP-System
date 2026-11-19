@@ -1,9 +1,9 @@
-.dart_tool/
-.packages
-build/
-# If you are building web, you might want to keep the web/ folder source, but ignore the build output
-.idea/
-.vscode/
+.git
+.gitignore
+.dart_tool
+.idea
+.vscode
+build
 *.iml
-.DS_Store
+*.log
 .env

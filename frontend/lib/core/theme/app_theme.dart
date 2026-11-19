@@ -1,9 +1,7 @@
 import 'package:material_ui/material_ui.dart';
-
 import 'app_colors.dart';
 import 'app_text_styles.dart';
 
-/// Semantic colors beyond the standard Material ColorScheme.
 @immutable
 class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   const AppSemanticColors({
@@ -26,8 +24,7 @@ class AppSemanticColors extends ThemeExtension<AppSemanticColors> {
   AppSemanticColors copyWith({
     Color? success, Color? successContainer, Color? warning,
     Color? warningContainer, Color? info, Color? infoContainer,
-    Color? sidebarBackground, Color? sidebarForeground,
-    Color? sidebarSelected,
+    Color? sidebarBackground, Color? sidebarForeground, Color? sidebarSelected,
   }) => AppSemanticColors(
     success: success ?? this.success,
     successContainer: successContainer ?? this.successContainer,
@@ -91,14 +88,6 @@ abstract final class AppTheme {
       fontFamily: AppTextStyles.fontFamily,
       textTheme: AppTextStyles.textTheme,
       extensions: const <ThemeExtension<dynamic>>[semanticColors],
-      appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.white,
-        foregroundColor: AppColors.textPrimary,
-        elevation: 0,
-        centerTitle: false,
-        surfaceTintColor: AppColors.white,
-        titleTextStyle: AppTextStyles.title,
-      ),
       cardTheme: CardThemeData(
         color: AppColors.white,
         elevation: 0,
@@ -113,7 +102,8 @@ abstract final class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.white,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 14),
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         hintStyle: AppTextStyles.bodySmall,
         labelStyle: AppTextStyles.label,
         border: OutlineInputBorder(
@@ -128,23 +118,13 @@ abstract final class AppTheme {
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.primary, width: 1.5),
         ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.error),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.error, width: 1.5),
-        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           foregroundColor: AppColors.white,
-          disabledBackgroundColor: AppColors.disabled,
-          disabledForegroundColor: AppColors.white,
-          minimumSize: const Size(0, 44),
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+          minimumSize: const Size(0, 40),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           textStyle: AppTextStyles.button,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           elevation: 0,
@@ -153,80 +133,11 @@ abstract final class AppTheme {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: AppColors.primary,
-          minimumSize: const Size(0, 44),
-          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+          minimumSize: const Size(0, 40),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           textStyle: AppTextStyles.button,
           side: const BorderSide(color: AppColors.border),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        ),
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: AppColors.primary,
-          textStyle: AppTextStyles.button,
-        ),
-      ),
-      dataTableTheme: const DataTableThemeData(
-        headingTextStyle: AppTextStyles.tableHeader,
-        dataTextStyle: AppTextStyles.body,
-        dividerThickness: 1,
-        horizontalMargin: 16,
-        columnSpacing: 24,
-      ),
-      navigationRailTheme: const NavigationRailThemeData(
-        backgroundColor: AppColors.sidebarBackground,
-        selectedIconTheme: IconThemeData(color: AppColors.white),
-        unselectedIconTheme: IconThemeData(color: AppColors.sidebarForeground),
-        selectedLabelTextStyle: TextStyle(
-          color: AppColors.white, fontWeight: FontWeight.w600,
-        ),
-        unselectedLabelTextStyle: TextStyle(color: AppColors.sidebarForeground),
-      ),
-    );
-  }
-
-  /// Starter dark theme. Validate all screens and chart colors before enabling.
-  static ThemeData get dark {
-    const darkSurface = Color(0xFF1D2731);
-    const darkText = Color(0xFFE9EEF3);
-    const outline = Color(0xFF465461);
-    const scheme = ColorScheme(
-      brightness: Brightness.dark,
-      primary: Color(0xFF79B5D9), onPrimary: Color(0xFF102B3D),
-      secondary: Color(0xFF82BCE4), onSecondary: Color(0xFF102B3D),
-      error: Color(0xFFFF8585), onError: Color(0xFF3A1010),
-      surface: darkSurface, onSurface: darkText,
-      outline: outline, outlineVariant: Color(0xFF384652),
-      shadow: AppColors.black, scrim: AppColors.black,
-      inverseSurface: darkText, onInverseSurface: darkSurface,
-      inversePrimary: AppColors.primary, surfaceTint: Color(0xFF79B5D9),
-    );
-
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.dark,
-      colorScheme: scheme,
-      scaffoldBackgroundColor: const Color(0xFF141C24),
-      fontFamily: AppTextStyles.fontFamily,
-      textTheme: AppTextStyles.textTheme.apply(
-        bodyColor: darkText, displayColor: darkText,
-      ),
-      extensions: const <ThemeExtension<dynamic>>[semanticColors],
-      dividerTheme: const DividerThemeData(color: Color(0xFF384652)),
-      inputDecorationTheme: InputDecorationTheme(
-        filled: true,
-        fillColor: darkSurface,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: outline),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: outline),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: Color(0xFF79B5D9), width: 1.5),
         ),
       ),
     );
