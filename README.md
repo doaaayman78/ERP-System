@@ -45,8 +45,8 @@ docker compose up --build -d postgres frontend-dev
 ```powershell
 docker compose up --build -d postgres frontend-prod
 ```
-* **Front-End Prod URL:** `http://localhost` (port `80`, served via Nginx with SPA fallback for `go_router` routes)
-* To test the staff flavor in production, set `FLAVOR=employee` in `.env` and rebuild.
+* **Front-End Prod URL:** `http://localhost` (port `80`, served via Nginx with SPA fallback for the React/Vite client)
+* The React client currently uses development mock data and is structured for API integration through the ASP.NET Core gateway.
 
 ### Step 4: Useful Verification & Lifecycle Commands
 * **Check running container status:**

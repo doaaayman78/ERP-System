@@ -2,7 +2,7 @@
 
 This is the initial single-PostgreSQL deployment for the ERP. Each schema is a future service boundary: `identity`, `party`, `catalog`, `pricing`, `inventory`, `procurement`, `sales`, `returns`, `finance`, `audit`, and `integration`. PostgreSQL is the only supported engine; all timestamps are UTC `timestamptz` and all amounts/quantities use exact `numeric` types.
 
-The repository uses one consolidated install file, `database/schema.sql`, rather than a migration directory. The backend is intended to be ASP.NET Core with Npgsql, and the frontend is intended to be Flutter communicating through backend APIs.
+The repository uses one consolidated install file, `database/schema.sql`, rather than a migration directory. The backend is intended to be ASP.NET Core with Npgsql, and the React + TypeScript frontend communicates through backend APIs.
 
 ## Ownership and relationships
 
