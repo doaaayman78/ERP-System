@@ -1,9 +1,9 @@
 # AURA ERP — Enterprise Resource Planning System
 Enterprise Resource Planning (ERP) System – Graduation Project
 
-> **Note:** The current front-end UI is an initial iteration using mock data (`USE_MOCK_DATA=true`) to enable full-stack development and testing; it will be refined for final deployment once the back-end services are completed.
+> **Note:** The current React front-end UI uses mock data while the back-end services are being completed.
 
-Production-oriented ERP foundation using **PostgreSQL 16**, **ASP.NET Core**, and **Flutter Web**.
+Production-oriented ERP foundation using **PostgreSQL 16**, **ASP.NET Core**, and **React with TypeScript**.
 
 ---
 
@@ -14,18 +14,17 @@ The PostgreSQL database implementation is available as a consolidated script:
 - [database/schema.sql](database/schema.sql) — schemas, tables, constraints, views, indexes, and development seed data
 - [database/queries/operations.sql](database/queries/operations.sql) — transaction-safe ERP operation templates
 - [database/README.md](database/README.md) — architecture, ownership, integrity, security, and deployment guidance
-- [BACKEND_SETUP.md](BACKEND_SETUP.md) — .NET/Npgsql and Flutter integration setup
+- [BACKEND_SETUP.md](BACKEND_SETUP.md) — .NET/Npgsql and React integration setup
 
 No production business data is included. Seed data is limited to development roles, permissions, catalog basics, warehouse basics, and financial accounts.
 
-### 2. Front-End (`frontend/`)
-The Flutter Web client (`AURA ERP`) is containerized and configured to run without a local Flutter SDK installation:
-- [frontend/README.md](frontend/README.md) — front-end module structure, RBAC roles, flavors (`dev`, `admin`, `employee`), and API integration hooks (`Remote*Repository` + `ApiClient`)
-- Currently defaults to `USE_MOCK_DATA=true` and switches to live API Gateway endpoints via `USE_MOCK_DATA=false` in `.env` once back-end APIs are ready.
+### 2. Front-End (`frontend-react/`)
+The React + TypeScript client (`AURA ERP`) is containerized and documented in [frontend-react/README.md](frontend-react/README.md).
+It currently uses mock data and is structured for API integration through the ASP.NET Core API Gateway.
 
 ---
 
-## Run PostgreSQL & Front-End with Docker
+## Run PostgreSQL & React Front-End with Docker
 
 Run all commands from the **project root** (`ERP-System/`) with **Docker Desktop** running:
 
@@ -75,7 +74,7 @@ docker compose up --build -d postgres frontend-prod
 
 ## Application Architecture
 
-The back-end should use **ASP.NET Core** with **Npgsql** and expose authenticated REST APIs through the API Gateway for the Flutter client. **Flutter must never connect directly to PostgreSQL.**
+The back-end should use **ASP.NET Core** with **Npgsql** and expose authenticated REST APIs through the API Gateway for the React client. **React must never connect directly to PostgreSQL.**
 
 Back-end modules follow the database schema boundaries:
 - `identity` — Users, roles, permissions, and JWT authentication
